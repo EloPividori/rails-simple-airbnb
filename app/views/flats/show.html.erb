@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/flats">Simple Airbnb</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="ms-auto d-flex">
+        <a class="btn btn-outline-primary my-2 my-sm-0 ms-2" href="/flats/new">Add Flat</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="map" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200')"></div>
+<div class="container margin-top-negative">
+  <div class="row d-flex">
+    <div class="col-8">
+      <div class="flat-show-card">
+        <div class="d-flex justify-content-space-between">
+            <div class="d-flex align-items-center">
+            <h1><%= @flat.name %></h1>
+            </div>
+            <div class="d-flex align-items-center ms-3">
+              <%= link_to("Edit", edit_flat_path(@flat), class:"text-warning") %>
+            </div>
+            <div class="d-flex align-items-center ms-3">
+              <%= link_to "Delete", flat_path(@flat),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"text-danger" %>
+            </div>
+        </div>
+        <p class=flat-show-address><%= @flat.address %></p>
+      </div>
+      <div class="flat-show-card">
+        <h3>A bit more about this flat...</h3>
+        <p><%= @flat.description %><p>
+      </div>
+      <div class="flat-show-card">
+        <h3>Details</h3>
+        <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-people-line"></i>
+              <span><%= @flat.number_of_guests %></span>
+          </div>
+          <div class="d-flex ms-3 align-items-center">
+            <span><%= @flat.price_per_night %></span>
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="flat-show-card">
+        <h5>Book this place!</h5>
+        <form action="">
+          <div class="input-group">
+            <span class="input-group-text" id="start-date-label">From:</span>
+            <input type="text" class="form-control" placeholder="12/10/2017" aria-label="start-date" aria-describedby="start-date-label">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-text" id="end-date-label">To:</span>
+            <input type="text" class="form-control" placeholder="18/10/2017" aria-label="end-date" aria-describedby="start-date-label">
+          </div>
+          <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
+        </form>
+      </div>
+      <div class="flat-show-card">
+        <div class="flex-align">
+          <h6 class="no-mb">Share</h6>
+
+          <div class="flex">
+            <i class="fa-brands fa-facebook-square me-2"></i>
+            <i class="fa-brands fa-twitter-square me-2"></i>
+            <i class="fa-brands fa-pinterest-square me-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
